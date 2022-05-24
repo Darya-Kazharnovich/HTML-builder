@@ -26,7 +26,7 @@ fs.readdir(pathToStylesDir, {withFileTypes: true}, (err, items) => {
         readStream.on('data', data => {
           arrayStyle.push(`${data}`);
           const textFile = path.join(pathToStyleCss);
-          fs.createWriteStream(textFile).write(arrayStyle.join('').toString());
+          fs.createWriteStream(textFile).write(arrayStyle.join('\n').toString());
         });
       }
     }
