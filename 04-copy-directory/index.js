@@ -5,21 +5,11 @@ const pathToFileCopi = path.join(__dirname, 'files-copy');
 
 fs.stat(pathToFileCopi, (err) => {
   if (err) {
-    addStyle ();
+    addStyle ()
   } else {
-    fs.readdir(pathToFileCopi, {withFileTypes: true}, (err, items) => {
-      if (err) {
-        console.error(err);
-      } 
-      for (let i = 0; i<items.length; i++) {
-        fs.unlink(path.join(pathToFileCopi, `${items[i].name}`), (err) => {
-          if (err) {
-            console.error(err);
-          }
-        });
-      }
-    });
-    addStyle ();
+   fs.rm(pathToFileCopi, {force: true, recursive: true}, () => {
+    addStyle ()
+    })
   }
 });
 
